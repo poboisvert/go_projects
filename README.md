@@ -8,7 +8,6 @@
 
 - go mod init api/server
 - go get github.com/gin-gonic/gin
-- Terminal 1: go run main.go && Terminal 2: curl localhost:6666/books
+- Terminal 1: go run main.go && Terminal 2: curl localhost:6666/markets
 
--- curl localhost:6666/books --header "Content-Type: ap
-plication/json" -d @body.json --request POST
+-- curl localhost:6666/markets --header "Content-Type: application/json" -d @body.json --request POST
