@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "bcbf4982-326d-42cf-88a3-65ce717f5d2e",
+		"name": "API-golang",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:6666/delete/2",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:6666/delete/2",
+					"host": [
+						"localhost"
+					],
+					"port": "6666",
+					"path": [
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:6666/add/2",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:6666/add/2",
+					"host": [
+						"localhost"
+					],
+					"port": "6666",
+					"path": [
+						"add",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:6666/markets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6666/markets",
+					"host": [
+						"localhost"
+					],
+					"port": "6666",
+					"path": [
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:6666/markets/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6666/markets/2",
+					"host": [
+						"localhost"
+					],
+					"port": "6666",
+					"path": [
+						"markets",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
