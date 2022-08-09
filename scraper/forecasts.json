@@ -1,0 +1,37 @@
+[
+    {
+        "Week": "Tue9 Aug",
+        "Temperature": "20",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Wed10 Aug",
+        "Temperature": "25",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Thu11 Aug",
+        "Temperature": "26",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Fri12 Aug",
+        "Temperature": "22",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Sat13 Aug",
+        "Temperature": "24",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Sun14 Aug",
+        "Temperature": "23",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    },
+    {
+        "Week": "Mon15 Aug",
+        "Temperature": "24",
+        "Url": "/forecast/hourly/qc-147_metric_e.html"
+    }
+]
