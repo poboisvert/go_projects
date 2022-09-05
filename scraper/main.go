@@ -1,50 +1,51 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"io/ioutil"
 	"log"
-	"os"
+	"net/http"
+	"sync"
+	"time"
 
-	"github.com/gocolly/colly"
+	scraper "github.com/cardigann/go-cloudflare-scraper"
 )
 
-type Weather struct {
-   Week     		string
-   Temperature    	string
-   Url    			string
+func makeRequest(c *http.Client, url string) {
+	t := time.Now()
+
+	log.Printf("Requesting %s", url)
+	resp, err := c.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	body, _ := ioutil.ReadAll(resp.Body)
+	log.Printf("Fetched %s in %s, %d bytes (status %d)",
+		url, time.Now().Sub(t), len(body), resp.StatusCode)
+
+	if resp.StatusCode != http.StatusOK {
+		log.Fatal("Invalid response code")
+	}
 }
 
 func main() {
-	c := colly.NewCollector(
-		colly.AllowedDomains("weather.gc.ca", "www.weather.gc.ca"),
-	)
-	
-	weathers := make([]Weather, 0)
 
 
-	c.OnHTML("div.div-table", func(e *colly.HTMLElement) {
-      e.ForEach("div.div-column", func(i int, h *colly.HTMLElement) {
-           item := Weather{}
-           item.Week = h.ChildText("[class='div-row div-row1 div-row-head']")
-           item.Temperature = h.ChildText("span.high")[:2]
-           item.Url = e.ChildAttrs("a", "href")[1]
-           weathers = append(weathers, item)
-       })
-	})
-	
-   c.OnScraped(func(r *colly.Response) {
-       fmt.Println("Finished", r.Request.URL)
-       js, err := json.MarshalIndent(weathers, "", "    ")
-       if err != nil {
-           log.Fatal(err)
-       }
-       fmt.Println("Writing data to file")
-       if err := os.WriteFile("forecasts.json", js, 0664); err == nil {
-           fmt.Println("Data written to file successfully")
-       }
 
-   })
+	t, err := scraper.NewTransport(http.DefaultTransport)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	c.Visit("https://weather.gc.ca/city/pages/qc-147_metric_e.html")
+	client := &http.Client{Transport: t}
+	wg := sync.WaitGroup{}
+
+	for i := 0; i < 1; i++ {
+		go func() {
+			makeRequest(client, "www.google.com")
+			wg.Done()
+		}()
+	}
+
+	wg.Wait()
 }
